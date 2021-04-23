@@ -18,6 +18,9 @@ public class PadelRacketsController {
     @Autowired
     private RacketRepository racketRepository;
 
+    @Autowired
+    private PadelRacketsService padelRacketsService;
+
     @GetMapping(path="/rackets")
     @CrossOrigin()
     public List<Racket> getRackets() {
@@ -37,7 +40,7 @@ public class PadelRacketsController {
     @PostMapping(path="/rackets")
     @CrossOrigin()
     public Racket addRacket(@RequestBody Racket racket) {
-        return racketRepository.save(racket);
+        return padelRacketsService.persistRacket(racket);
     }
 
     @PostMapping (path="/rackets/{id}")
@@ -45,9 +48,9 @@ public class PadelRacketsController {
     public Racket updateRacket(@RequestBody Racket newRacket, @PathVariable Integer id) {
         return racketRepository.findById(id)
         .map(racket -> {
-            racket.setName(newRacket.getName());
-            racket.setAge(newRacket.getAge());
-            racket.setJersey(newRacket.getJersey());
+            racket.setBrand(newRacket.getBrand());
+            racket.setModel(newRacket.getModel());
+            racket.setVersion(newRacket.getVersion());
             return racketRepository.save(racket);
          })
          .orElseThrow(() -> new RacketNotFoundException(id));

@@ -12,18 +12,18 @@ public class Racket {
     @GeneratedValue (strategy=GenerationType.AUTO)
     private Integer id;
 
-    private String name;
-    private String jersey; 
-    private int age;
+    private String brand;
+    private String model;
+    private String version;
     
     public Racket() {
        
     }
 
-    public Racket(String name, String jersey, int age) {
-        this.name = name;   
-        this.jersey = jersey;
-        this.age = age; 
+    public Racket(String brand, String model, String version) {
+        this.brand = brand;
+        this.model = model;
+        this.version = version;
     }
 
     public Integer getId() {
@@ -34,27 +34,37 @@ public class Racket {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getBrand() {
+        return brand;
     }
 
-    public void setName (String name) {
-        this.name = name;
+    public void setBrand(String brand) {
+        this.brand = brand;
     }
 
-    public int getAge() {
-        return age;
+    public String getModel() {
+        return model;
     }
 
-    public void setAge (int age) {
-        this.age = age;
+    public void setModel(String model) {
+        this.model = model;
     }
 
-    public String getJersey() {
-        return jersey;
+    public String getVersion() {
+        return version;
     }
 
-    public void setJersey (String jersey) {
-        this.jersey = jersey;
+    public void setVersion(String version) {
+        this.version = version;
+    }
+
+    @Override
+    public String toString() {
+        return "Racket{" +
+                "id=" + id +
+                ", brand='" + brand + '\'' +
+                ", model='" + model + '\'' +
+                ", version='" + version + '\'' +
+                '}';
     }
 }
